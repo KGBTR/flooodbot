@@ -3,5 +3,42 @@
   "description": "For your subreddit flood requirements.",
   "image": "heroku/python",
   "repository": "https://github.com/KGBTR/FloooDBot",
-  "keywords": ["python", "reddit", "bot", "flood", "database"]
+  "keywords": ["python", "reddit", "bot", "flood", "database"],
+  "env": {
+    "LOG_LEVEL": {
+      "required": true,
+      "value": "INFO",
+      "description": "Logger base level. Default is INFO"
+    },
+    "BOT_CLIENT_ID": {
+      "required": true,
+      "value": "",
+      "description": "Look at from https://www.reddit.com/prefs/apps. Reddit app client id. 14 character length. Default is empty"
+    },
+    "BOT_CLIENT_SECRET": {
+      "required": true,
+      "value": "",
+      "description": "Look at from https://www.reddit.com/prefs/apps. Reddit app client secret. 27 character length. Default is empty"
+    },
+    "BOT_PASSWORD": {
+      "required": true,
+      "value": "B0tP455w0rd",
+      "description": "Reddit bot account password. Default is filler text"
+    },
+    "BOT_USERAGENT": {
+      "required": true,
+      "value": "BotName:V1.0 by BotDevelopers",
+      "description": "If you use environment variables must set True. Default is filler text"
+    },
+    "BOT_USERNAME": {
+      "required": true,
+      "value": "BotName",
+      "description": "Reddit bot account username(without u/). Like a BotName. Default is filler text"
+    },
+    "BOT_ACTIVE_SUBREDDIT": {
+      "required": true,
+      "value": "SubredditName",
+      "description": "Subreddit where the bot will run(without r/). Default is filler text"
+    }
+  }
 }
