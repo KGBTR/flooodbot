@@ -1,7 +1,7 @@
 # File created using '.gitignore Generator' for Visual Studio Code: https://bit.ly/vscode-gig
 
-# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,linux,python,venv
-# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,linux,python,venv
+# Created by https://www.toptal.com/developers/gitignore/api/visualstudiocode,venv,python,linux,vscode
+# Edit at https://www.toptal.com/developers/gitignore?templates=visualstudiocode,venv,python,linux,vscode
 
 ### Linux ###
 *~
@@ -179,6 +179,7 @@ pyvenv.cfg
 pip-selfcheck.json
 
 ### VisualStudioCode ###
+.vscode/
 .vscode/*
 !.vscode/tasks.json
 !.vscode/launch.json
@@ -189,7 +190,12 @@ pip-selfcheck.json
 .history
 .ionide
 
-# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,linux,python,venv
+### vscode ###
+!.vscode/settings.json
+!.vscode/extensions.json
+
+# End of https://www.toptal.com/developers/gitignore/api/visualstudiocode,venv,python,linux,vscode
 
 # Custom rules (everything added below won't be overriden by 'Generate .gitignore File' if you use 'Update' option)
+
 praw.ini

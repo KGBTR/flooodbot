@@ -1,0 +1,7 @@
+{
+  "name": "Flood Database Reddit Bot",
+  "description": "For your subreddit flood requirements.",
+  "image": "heroku/python",
+  "repository": "https://github.com/KGBTR/FloooDBot",
+  "keywords": ["python", "reddit", "bot", "flood", "database"]
+}
