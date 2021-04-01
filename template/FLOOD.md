@@ -2,4 +2,4 @@
 
 {flood}
 
-[^(kaynak-kodum)](https://github.com/KGBTR/FloooDBot)
+[^(kaynak-kodum)]({source-code})
