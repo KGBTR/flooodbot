@@ -44,8 +44,8 @@ def main():
     for comment in bot.subreddit(BOT_ACTIVE_SUBREDDIT).stream.comments():
         comment.body = comment.body.lower().strip()
         if comment.author.name != f"{bot.user.me()}":
-            flood(comment)
-            listing(comment)
+            flood(comment=comment, message_to=bot.user.me())
+            listing(comment=comment, message_to=bot.user.me())
 
 if __name__ == "__main__":
     main()

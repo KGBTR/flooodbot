@@ -4,5 +4,19 @@
     "base": "flood",
     "list": "list"
   },
+  "send-message": {
+    "add-flood": {
+      "subject": "Flood önerim var",
+      "message": ""
+    },
+    "make-suggestion": {
+      "subject": "FloodBot ile ilgili bunları da yapsanız güzel olur",
+      "message": ""
+    },
+    "report-error": {
+      "subject": "FloodBot düzgün çalışmıyor",
+      "message": "<Yorum linki>\n\n"
+    }
+  },
   "source-code": "https://github.com/KGBTR/FloooDBot"
 }

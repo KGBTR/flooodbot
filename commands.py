@@ -1,8 +1,8 @@
-from re import template
 from praw.models import Comment
 from logging import getLogger
 from json import loads as json_load
 from os import getenv
+from urllib.parse import urlencode, quote
 
 from utils import read_file, fill_template
 
@@ -14,7 +14,7 @@ config: dict = json_load(read_file("./config.json"))
 
 # FOR: Scans by iterating whether there is a match with the comment thrown on all key values
 # `!flood {flood name}` by default
-def flood(comment: Comment) -> None:
+def flood(comment: Comment, message_to: str) -> None:
     try:
         FLOOD_TEMPLATE = fill_template(
             template=read_file("./template/FLOOD.md"),
@@ -23,7 +23,10 @@ def flood(comment: Comment) -> None:
                 "mark": config["mark"],
                 "command-list": config["commands"]["list"],
                 "source-code": config["source-code"],
-                "flood": "{flood}"
+                "add-flood": f"https://www.reddit.com/message/compose?to={message_to}&{urlencode(config['send-message']['add-flood'], quote_via=quote)}",
+                "make-suggestion": f"https://www.reddit.com/message/compose?to={message_to}&{urlencode(config['send-message']['make-suggestion'], quote_via=quote)}",
+                "report-error": f"https://www.reddit.com/message/compose?to={message_to}&{urlencode(config['send-message']['report-error'], quote_via=quote)}",
+                "flood": "{flood}",
             },
         )
 
@@ -53,7 +56,7 @@ def flood(comment: Comment) -> None:
 
 
 # FOR: Listing flood `!list` by default
-def listing(comment: Comment) -> None:
+def listing(comment: Comment, message_to: str) -> None:
     try:
         LISTING_TEMPLATE = fill_template(
             template=read_file("./template/LISTING.md"),
@@ -63,6 +66,9 @@ def listing(comment: Comment) -> None:
                 "mark": config["mark"],
                 "command-base": config["commands"]["base"],
                 "source-code": config["source-code"],
+                "add-flood": f"https://www.reddit.com/message/compose?to={message_to}&{urlencode(config['send-message']['add-flood'], quote_via=quote)}",
+                "make-suggestion": f"https://www.reddit.com/message/compose?to={message_to}&{urlencode(config['send-message']['make-suggestion'], quote_via=quote)}",
+                "report-error": f"https://www.reddit.com/message/compose?to={message_to}&{urlencode(config['send-message']['report-error'], quote_via=quote)}",
             },
         )
 
