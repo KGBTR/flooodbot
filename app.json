@@ -10,6 +10,11 @@
       "value": "INFO",
       "description": "Logger base level. Default is INFO"
     },
+    "PY_ENV": {
+      "required": true,
+      "value": "production",
+      "description": "Bot running in production or development. Default is production"
+    },
     "BOT_CLIENT_ID": {
       "required": true,
       "value": "",
