@@ -23,9 +23,9 @@ def flood(comment: Comment, message_to: str) -> None:
                 "mark": config["mark"],
                 "command-list": config["commands"]["list"],
                 "source-code": config["source-code"],
-                "add-flood": f"https://www.reddit.com/message/compose?to={message_to}&{urlencode(config['send-message']['add-flood'], quote_via=quote)}",
-                "make-suggestion": f"https://www.reddit.com/message/compose?to={message_to}&{urlencode(config['send-message']['make-suggestion'], quote_via=quote)}",
-                "report-error": f"https://www.reddit.com/message/compose?to={message_to}&{urlencode(config['send-message']['report-error'], quote_via=quote)}",
+                "add-flood": f"https://www.reddit.com/message/compose?to=u/{message_to}&{urlencode(config['send-message']['add-flood'], quote_via=quote)}",
+                "make-suggestion": f"https://www.reddit.com/message/compose?to=u/{message_to}&{urlencode(config['send-message']['make-suggestion'], quote_via=quote)}",
+                "report-error": f"https://www.reddit.com/message/compose?to=u/{message_to}&{urlencode(config['send-message']['report-error'], quote_via=quote)}",
                 "flood": "{flood}",
             },
         )
@@ -66,9 +66,9 @@ def listing(comment: Comment, message_to: str) -> None:
                 "mark": config["mark"],
                 "command-base": config["commands"]["base"],
                 "source-code": config["source-code"],
-                "add-flood": f"https://www.reddit.com/message/compose?to={message_to}&{urlencode(config['send-message']['add-flood'], quote_via=quote)}",
-                "make-suggestion": f"https://www.reddit.com/message/compose?to={message_to}&{urlencode(config['send-message']['make-suggestion'], quote_via=quote)}",
-                "report-error": f"https://www.reddit.com/message/compose?to={message_to}&{urlencode(config['send-message']['report-error'], quote_via=quote)}",
+                "add-flood": f"https://www.reddit.com/message/compose?to=u/{message_to}&{urlencode(config['send-message']['add-flood'], quote_via=quote)}",
+                "make-suggestion": f"https://www.reddit.com/message/compose?to=u/{message_to}&{urlencode(config['send-message']['make-suggestion'], quote_via=quote)}",
+                "report-error": f"https://www.reddit.com/message/compose?to=u/{message_to}&{urlencode(config['send-message']['report-error'], quote_via=quote)}",
             },
         )
 
