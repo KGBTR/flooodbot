@@ -2,11 +2,8 @@ name: release
 
 on:
   push:
-    branches:
-    - main
     tags:
     - 'v*'
-    - 'V*'
 
 env:
   ACTION_NAME: release-please-action
