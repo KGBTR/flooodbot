@@ -1,0 +1,8 @@
+{
+  "mark": "!",
+  "commands": {
+    "base": "flood",
+    "list": "list"
+  },
+  "source-code": "https://github.com/KGBTR/FloooDBot"
+}
