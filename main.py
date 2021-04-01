@@ -1,8 +1,8 @@
 from praw import Reddit
 import logging
-import json
 from os import getenv
 
+from commands import listing, flood
 
 def main():
     bot: Reddit
@@ -15,8 +15,6 @@ def main():
         format="%(asctime)s, %(levelname)s [%(filename)s:%(lineno)d] %(funcName)s(): %(message)s",
     )
     logger = logging.getLogger(__name__)
-
-    REPLY_MESSAGE = open("REPLY.md", "r").read()
 
     try:
         BOT_CLIENT_SECRET = getenv("BOT_CLIENT_SECRET")
@@ -39,44 +37,15 @@ def main():
         else:
             logger.info("Using praw.ini")
             bot = Reddit("KGBTRBot", config_interpolation="extended")
-
         logger.info(f"Logged as u/{bot.user.me()}")
     except Exception as err:
-        logger.error(
-            f"Error occurred while authentication."
-        )
-        logger.error(err)
+        logger.exception(f"Error occurred while authentication.")
 
-    data = json.loads(open("floods.json", "r").read())
-
-    for top_level_comment in bot.subreddit(BOT_ACTIVE_SUBREDDIT).stream.comments():
-        top_level_comment.body = top_level_comment.body.lower().strip()
-        for key, value in data["floods"].items():
-            if (
-                key.lower().strip() in top_level_comment.body
-                and f"{data['config']['mark']}{data['config']['command']}"
-                in top_level_comment.body
-                and not top_level_comment.saved
-            ):
-                try:
-                    logger.info(
-                        f"{top_level_comment.body} from u/{top_level_comment.author} in r/{top_level_comment.subreddit}"
-                    )
-                    logger.info(
-                        f"Replied to https://reddit.com{top_level_comment.permalink}"
-                    )
-                    logger.debug(f"\n{value.strip()}")
-                    top_level_comment.reply(
-                        REPLY_MESSAGE.replace("{author}", top_level_comment.author.name).replace("{flood}", value.strip())
-                    )
-                    top_level_comment.save()
-                except Exception as err:
-                    top_level_comment.unsave()
-                    logger.error(
-                        f"Error occurred while replied to https://reddit.com{top_level_comment.permalink}"
-                    )
-                    logger.error(err)
-
+    for comment in bot.subreddit(BOT_ACTIVE_SUBREDDIT).stream.comments():
+        comment.body = comment.body.lower().strip()
+        if comment.author.name != f"{bot.user.me()}":
+            flood(comment)
+            listing(comment)
 
 if __name__ == "__main__":
     main()
